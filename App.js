@@ -6,6 +6,8 @@ import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 import { primaryBlue, white } from './utils/colors';
 import DecksWrapper from './components/DecksWrapper';
 import AddDeck from './components/AddDeck';
+import DeckDetails from './components/DeckDetails';
+import AddCard from './components/AddCard';
 
 function CustomStatusBar({ ...props }) {
   return (
@@ -69,6 +71,24 @@ const Tabs = TabNavigator(
 const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs
+  },
+  DeckDetails: {
+    screen: DeckDetails,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: primaryBlue
+      }
+    }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: primaryBlue
+      }
+    }
   }
 });
 
@@ -76,7 +96,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <CustomStatusBar />
+        <CustomStatusBar barStyle="light-content" />
         <MainNavigator />
       </View>
     );
