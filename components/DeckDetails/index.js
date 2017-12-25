@@ -1,24 +1,42 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { primaryBlue, white, yellow } from '../../utils/colors';
+import { getDeck } from '../../utils/api';
 
 class DeckDetails extends Component {
+  state = {
+    deck: {
+      questions: []
+    }
+  };
   static navigationOptions = ({ navigation }) => {
     const { id } = navigation.state.params;
     return { title: `${id}`, headerBackTitle: null };
   };
 
+  componentDidMount() {
+    getDeck(this.props.navigation.state.params.id).then(deck =>
+      this.setState({ deck })
+    );
+  }
+
   render() {
+    const { deck } = this.state;
     return (
       <View style={styles.container}>
         <View style={{ marginBottom: 50 }}>
-          <Text style={[styles.center, styles.titleHeading]}>Deck Title</Text>
-          <Text style={[styles.center]}>10 Cards</Text>
+          <Text style={[styles.center, styles.titleHeading]}>{deck.title}</Text>
+          <Text style={[styles.center]}>{deck.questions.length} Cards</Text>
         </View>
         <View>
           <TouchableOpacity
             style={styles.btn}
-            onPress={() => this.props.navigation.navigate('AddCard')}
+            onPress={() =>
+              this.props.navigation.navigate('AddCard', {
+                id: deck.title,
+                cards: deck.questions
+              })
+            }
           >
             <Text style={styles.addBtnText}>Add Card</Text>
           </TouchableOpacity>

@@ -7,6 +7,8 @@ import {
   StyleSheet
 } from 'react-native';
 import { primaryBlue, white, green } from '../../utils/colors';
+import { NavigationActions } from 'react-navigation';
+import { addCard } from '../../utils/api';
 
 class AddCard extends Component {
   state = {
@@ -15,6 +17,30 @@ class AddCard extends Component {
   };
 
   static navigationOptions = { title: 'Add Card' };
+
+  handleAddCard = () => {
+    const key = this.props.navigation.state.params.id;
+    const { cards } = this.props.navigation.state.params;
+    const card = {
+      question: this.state.questionText,
+      answer: this.state.answerText
+    };
+    const resetAction = NavigationActions.reset({
+      index: 1,
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'Home'
+        }),
+        NavigationActions.navigate({
+          routeName: 'DeckDetails',
+          params: { id: key }
+        })
+      ]
+    });
+
+    addCard(key, cards, card);
+    this.props.navigation.dispatch(resetAction);
+  };
 
   render() {
     return (
@@ -36,7 +62,7 @@ class AddCard extends Component {
             style={styles.answerInput}
           />
         </View>
-        <TouchableOpacity style={styles.addBtn}>
+        <TouchableOpacity style={styles.addBtn} onPress={this.handleAddCard}>
           <Text style={styles.addBtnText}>Add Card</Text>
         </TouchableOpacity>
       </View>

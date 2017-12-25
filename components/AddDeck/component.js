@@ -18,21 +18,13 @@ class AddDeck extends Component {
   handleAddDeck = () => {
     const key = this.state.inputValue;
     const deck = { title: this.state.inputValue, questions: [] };
-    const backAction = NavigationActions.back({
-      key: 'AllDecks'
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: 'Home' })]
     });
 
     addDeck(key, deck);
-    this.toDeckList();
-  };
-
-  toDeckList = () => {
-    console.log('Sarah');
-    this.props.navigation.dispatch(
-      NavigationActions.back({
-        key: 'AddDeck'
-      })
-    );
+    this.props.navigation.dispatch(resetAction);
   };
 
   render() {

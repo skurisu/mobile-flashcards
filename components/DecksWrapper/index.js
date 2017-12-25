@@ -14,9 +14,10 @@ class DecksWrapper extends Component {
   state = {
     decks: []
   };
+
   componentDidMount() {
     fetchDecks().then(data => {
-      const decks = Object.keys(data).map(key => {
+      const decks = Object.keys(data || {}).map(key => {
         const obj = data[key];
         return obj;
       });
@@ -27,7 +28,15 @@ class DecksWrapper extends Component {
 
   render() {
     const { decks } = this.state;
-    // console.log(typeof decks);
+
+    if (decks.length === 0) {
+      return (
+        <View style={styles.addMessage}>
+          <Text>Please add a deck</Text>
+        </View>
+      );
+    }
+
     return (
       <ScrollView style={styles.container}>
         {decks.map(deck => {
@@ -56,5 +65,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: white,
     padding: 15
+  },
+  addMessage: {
+    flex: 1,
+    backgroundColor: white,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
