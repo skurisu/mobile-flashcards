@@ -6,8 +6,10 @@ class DeckCard extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={[styles.center, styles.titleHeading]}>Deck Title</Text>
-        <Text style={[styles.center]}>10 Cards</Text>
+        <Text style={[styles.center, styles.titleHeading]}>
+          {this.props.title}
+        </Text>
+        <Text style={[styles.center]}>{this.props.length} Cards</Text>
       </View>
     );
   }
