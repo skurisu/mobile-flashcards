@@ -19,8 +19,14 @@ class AddDeck extends Component {
     const key = this.state.inputValue;
     const deck = { title: this.state.inputValue, questions: [] };
     const resetAction = NavigationActions.reset({
-      index: 0,
-      actions: [NavigationActions.navigate({ routeName: 'Home' })]
+      index: 1,
+      actions: [
+        NavigationActions.navigate({ routeName: 'Home' }),
+        NavigationActions.navigate({
+          routeName: 'DeckDetails',
+          params: { id: key }
+        })
+      ]
     });
 
     addDeck(key, deck);
