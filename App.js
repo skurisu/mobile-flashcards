@@ -8,6 +8,7 @@ import DecksWrapper from './components/DecksWrapper';
 import AddDeck from './components/AddDeck';
 import DeckDetails from './components/DeckDetails';
 import AddCard from './components/AddCard';
+import QuizCardWrapper from './components/QuizCardWrapper';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
@@ -86,6 +87,15 @@ const MainNavigator = StackNavigator({
   },
   AddCard: {
     screen: AddCard,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: primaryBlue
+      }
+    }
+  },
+  Quiz: {
+    screen: QuizCardWrapper,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
