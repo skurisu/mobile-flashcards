@@ -3,7 +3,7 @@ import { Notifications, Permissions } from 'expo';
 import { NOTIFICATION_KEY } from './constants';
 
 export function clearLocalNotification() {
-  AsyncStorage.removeItem(NOTIFICATION_KEY).then(
+  return AsyncStorage.removeItem(NOTIFICATION_KEY).then(
     Notifications.cancelAllScheduledNotificationsAsync
   );
 }
