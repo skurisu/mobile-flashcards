@@ -10,6 +10,7 @@ import DeckDetails from './components/DeckDetails';
 import AddCard from './components/AddCard';
 import QuizCardWrapper from './components/QuizCardWrapper';
 import { createStore } from 'redux';
+import { setLocalNotification } from './utils/helpers';
 
 function CustomStatusBar({ ...props }) {
   return (
@@ -104,6 +105,10 @@ const MainNavigator = StackNavigator({
 });
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>

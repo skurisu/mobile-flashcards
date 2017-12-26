@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { primaryBlue, white, green, red, yellow } from '../../utils/colors';
 import { NavigationActions } from 'react-navigation';
+import {
+  clearLocalNotification,
+  setLocalNotification
+} from '../../utils/helpers';
 
 class Results extends Component {
+  componentDidMount() {
+    clearLocalNotification().then(setLocalNotification);
+  }
+
   render() {
     return (
       <View style={styles.container}>
