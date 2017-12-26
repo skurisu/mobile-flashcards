@@ -1,3 +1,13 @@
+# Mobile Flashcards
+
+This app is for creating decks of flashcards. Add cards to your deck and then quiz yourself to see how much you remember! Please note that this app has been developed specifically for the iOS platform.
+
+## Getting started
+
+To get the app up and running, clone down this repo and use command `yarn install` followed by `yarn start`. Follow the terminal prompts by using `i` to open the app in an iOS simulator or `q` to display a QR code to scan to your device. If running the app via QR code on an iOS device, make sure to install the latest version of [Expo](https://itunes.apple.com/us/app/expo-client/id982107779?mt=8).
+
+---
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
@@ -117,6 +127,7 @@ REACT_NATIVE_PACKAGER_HOSTNAME='my-custom-ip-address-or-hostname' npm start
 ```
 
 Windows:
+
 ```
 set REACT_NATIVE_PACKAGER_HOSTNAME='my-custom-ip-address-or-hostname'
 npm start
