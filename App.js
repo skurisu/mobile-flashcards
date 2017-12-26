@@ -10,8 +10,6 @@ import DeckDetails from './components/DeckDetails';
 import AddCard from './components/AddCard';
 import QuizCardWrapper from './components/QuizCardWrapper';
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from './reducers';
 
 function CustomStatusBar({ ...props }) {
   return (
@@ -107,15 +105,11 @@ const MainNavigator = StackNavigator({
 
 export default class App extends React.Component {
   render() {
-    const store = createStore(rootReducer);
-
     return (
-      <Provider store={store}>
-        <View style={{ flex: 1 }}>
-          <CustomStatusBar barStyle="light-content" />
-          <MainNavigator />
-        </View>
-      </Provider>
+      <View style={{ flex: 1 }}>
+        <CustomStatusBar barStyle="light-content" />
+        <MainNavigator />
+      </View>
     );
   }
 }
